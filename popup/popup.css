@@ -1,0 +1,40 @@
+body {
+    width: 400px;
+    margin: 2rem;
+}
+
+.hidden {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+}
+
+input[type=checkbox]+label {
+    background-color: white !important;
+}
+  
+input[type=checkbox]:checked+label {
+    background-color: aqua !important;
+}
+
+.grid {
+    display: grid;
+}
+  
+.halved {
+    grid-template-columns: repeat(2, 1fr);
+}
+  
+.button {
+    font-family: sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    background-color: white;
+    border: 7px solid black;
+    padding: 0.6rem;
+    margin: 10px;
+}
+
+button:hover {
+    background-color: #dddddd;
+}

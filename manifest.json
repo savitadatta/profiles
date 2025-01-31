@@ -1,0 +1,20 @@
+{
+    "name": "Profiles Test",
+    "description": "Sandbox",
+    "version": "1.0",
+    "manifest_version": 3,
+    "background": {
+        "service_worker": "background.js"
+    },
+    "action": {
+        "default_popup": "popup/popup.html"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "css": ["content-scripts/content-script.css"],
+            "js": ["content-scripts/content-script.js"]
+        }
+    ],
+    "permissions": ["storage"]
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+    <h1>This is the popup page!</h1>
+
+    <div class="grid halved">
+        <span class="button" id="options">options</span>
+        <span class="button" id="clean">clean</span>
+        <span class="button" id="simplify">simplify</span>
+        <span class="button" id="search">search</span>
+    </div>
+    <div class="grid results">
+        <input id="abc-cb" type="checkbox" class="hidden">
+        <label id="abc" class="button clean" for="abc-cb">
+            abc
+        </label>
+        
+        <input id="def-cb" type="checkbox" class="hidden">
+        <label id="def" class="button simplify" for="def-cb">
+            def
+        </label>
+
+        <input id="ghi-cb" type="checkbox" class="hidden">
+        <label id="ghi" class="button search" for="ghi-cb">
+            ghi
+        </label>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
