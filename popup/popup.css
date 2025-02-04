@@ -35,6 +35,10 @@ input[type=checkbox]:checked+label {
     margin: 10px;
 }
 
-button:hover {
+.button:hover {
     background-color: #dddddd;
+}
+
+.button:active {
+    background-color: #cccccc;
 }

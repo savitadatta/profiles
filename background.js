@@ -1,3 +1,5 @@
-chrome.runtime.onMessage.addListener((msg) => {
-    console.log(msg.text);
+chrome.runtime.onMessage.addListener((message) => {
+    if (message.text) {
+        console.log(message.text);
+    }
 });

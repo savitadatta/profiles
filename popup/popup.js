@@ -1,6 +1,6 @@
-//##############################
-//##########LISTENERS###########
-//##############################
+//////////////////////////////////
+////////////LISTENERS/////////////
+//////////////////////////////////
 
 for (let button of document.querySelectorAll(".halved .button")) {
     button.addEventListener('click', () => {
@@ -9,20 +9,33 @@ for (let button of document.querySelectorAll(".halved .button")) {
 }
 
 for (let button of document.querySelectorAll(".results .button")) {
+    // these are all labels for checkboxes;
+    // the input is directly before each one
     button.addEventListener('click', () => {
-        toggle(button);
+        toggle(button.previousElementSibling);
     })
 }
 
-//##############################
-//####GLOBALS (change later)####
-//##############################
+//////////////////////////////////
+//////GLOBALS (change later)//////
+//////////////////////////////////
 
 let selected = [];
 
-//##############################
-//##########FUNCTIONS###########
-//##############################
+//////////////////////////////////
+//////////////SETUP///////////////
+//////////////////////////////////
+
+chrome.storage.sync.get("features", (data) => {
+    if (data.features) {
+        selected = data.features;
+        updateSelectedFeatures(selected);
+    }
+})
+
+//////////////////////////////////
+////////////FUNCTIONS/////////////
+//////////////////////////////////
 
 function show(obj) {
     id = obj.id;
@@ -36,14 +49,23 @@ function show(obj) {
 }
 
 function toggle(obj) {
-    console.log(obj.id + " clicked");
     if (selected.includes(obj.id)) {
         selected.pop(obj.id);
-        console.log("unselected");
     } else {
         selected.push(obj.id);
-        console.log("selected");
     }
     
-    chrome.storage.local.set({ selected })
+    chrome.storage.sync.set({ features : selected });
+}
+
+function updateSelectedFeatures(selected) {
+    for (let input of document.getElementsByTagName("input")) {
+        if (input.type == "checkbox") {
+            if (selected.includes(input.id)) {
+                input.checked = true;
+            } else {
+                input.checked = false;
+            }
+        }
+    }
 }
