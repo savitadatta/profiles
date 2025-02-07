@@ -1,0 +1,21 @@
+body {
+    margin: 2rem;
+}
+
+.button {
+    font-family: sans-serif;
+    font-size: larger;
+    font-weight: bold;
+    background-color: white;
+    border: 7px solid black;
+    padding: 0.6rem;
+    margin: 10px;
+}
+
+.button:hover {
+    background-color: #dddddd;
+}
+
+.button:active {
+    background-color: #cccccc;
+}

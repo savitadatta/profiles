@@ -1,6 +1,5 @@
 body {
     width: 400px;
-    margin: 2rem;
 }
 
 .hidden {
@@ -25,20 +24,3 @@ input[type=checkbox]:checked+label {
     grid-template-columns: repeat(2, 1fr);
 }
   
-.button {
-    font-family: sans-serif;
-    font-size: larger;
-    font-weight: bold;
-    background-color: white;
-    border: 7px solid black;
-    padding: 0.6rem;
-    margin: 10px;
-}
-
-.button:hover {
-    background-color: #dddddd;
-}
-
-.button:active {
-    background-color: #cccccc;
-}

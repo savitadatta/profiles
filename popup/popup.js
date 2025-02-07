@@ -4,7 +4,11 @@
 
 for (let button of document.querySelectorAll(".halved .button")) {
     button.addEventListener('click', () => {
-        show(button);
+        if (button.id === 'options') {
+            window.open('../options/options.html', '_blank').focus();
+        } else {
+            show(button);
+        }
     })
 }
 
