@@ -1,6 +1,43 @@
-document.getElementById("submit").addEventListener('click', () => {
-    let form = document.getElementById("form");
-    submitForm(form);
+// from https://web.archive.org/web/20170607022450/http://karlgroves.com/2014/11/24/ridiculously-easy-trick-for-keyboard-accessibility/
+function keyboardClick(event){
+    if (event.type === 'keypress'){
+        var code = event.charCode || event.keyCode;
+        if ((code === 32) || (code === 13)){
+            return true;
+        }
+    }
+    return false;
+}
+
+document.getElementById("submit").addEventListener('keypress', (e) => {
+    if (keyboardClick(e)) {
+        submitForm("form");
+    }
+})
+document.getElementById("submit").addEventListener('click', (e) => {
+    submitForm("form");
+})
+
+document.getElementById("upload-file").addEventListener('change', (e) => {
+    e.target.labels[0].innerText = e.target.files[0].name;
+})
+
+document.getElementById("submit-file").addEventListener('click', (e) => {
+    console.log("clicked submit file");
+    // https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText
+    let fileInput = document.getElementById("upload-file");
+    let [file] = fileInput.files;
+    let reader = new FileReader();
+
+    reader.addEventListener('load', () => {
+        console.log(reader.result);
+        let parsed = JSON.parse(reader.result);
+        console.log(parsed);
+    });
+
+    if (file) {
+        reader.readAsText(file);
+    }
 })
 
 function getCheckedIds(nodelist, label=false) {
@@ -16,7 +53,8 @@ function getCheckedIds(nodelist, label=false) {
     });
 }
 
-function submitForm(form) {
+function submitForm(id) {
+    let form = document.getElementById(id);
     let elements = form.elements;
     let data = {};
 
