@@ -15,10 +15,21 @@ for (let button of document.querySelectorAll(".halved .button")) {
 for (let button of document.querySelectorAll(".results .button")) {
     // these are all labels for checkboxes;
     // the input is directly before each one
-    button.addEventListener('click', () => {
-        toggle(button.previousElementSibling);
-    })
+    if (button.id != 'reader') {
+        button.addEventListener('click', () => {
+            toggle(button.previousElementSibling);
+        })
+    }
 }
+
+document.getElementById('reader').addEventListener('click', () => {
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+        chrome.tabs.sendMessage(
+            tabs[0]?.id,
+            { request: "getBodyContainer" }
+        );
+    });
+})
 
 //////////////////////////////////
 //////GLOBALS (change later)//////
