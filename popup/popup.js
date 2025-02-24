@@ -26,7 +26,16 @@ document.getElementById('reader').addEventListener('click', () => {
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         chrome.tabs.sendMessage(
             tabs[0]?.id,
-            { request: "getBodyContainer" }
+            { request: "bigText" }
+        );
+    });
+})
+
+document.getElementById('undo').addEventListener('click', () => {
+    chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+        chrome.tabs.sendMessage(
+            tabs[0]?.id,
+            { request: "undo" }
         );
     });
 })
