@@ -15,7 +15,7 @@ for (let button of document.querySelectorAll(".halved .button")) {
 for (let button of document.querySelectorAll(".results .button")) {
     // these are all labels for checkboxes;
     // the input is directly before each one
-    if (button.id != 'reader') {
+    if (['reader', 'undo'].includes(button.id)) {
         button.addEventListener('click', () => {
             toggle(button.previousElementSibling);
         })

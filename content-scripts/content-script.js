@@ -15,7 +15,7 @@ function getContainer() {
 }
 
 function makeTextBig(container) {
-    container.querySelectorAll("p, h2, h3, h4, h5, h6").forEach((e) => {
+    container.querySelectorAll("p, h2, h3, h4, h5, h6, table").forEach((e) => {
         e.style.fontSize = "180%";
         e.style.lineHeight = 1.5;
     })
@@ -25,7 +25,7 @@ function makeTextBig(container) {
     // })
 
     container.querySelectorAll("li, blockquote").forEach((e) => {
-        if (e.querySelector("p")) {
+        if (e.querySelector("p") || e.querySelector("li")) {
             return;
         }
         
@@ -43,6 +43,9 @@ function undoStyle(container) {
 chrome.runtime.onMessage.addListener((msg) => {
     if (msg.request === "bigText") {
         let container = getContainer();
+        chrome.runtime.sendMessage({
+            text: container.className
+        })
         makeTextBig(container);
     } else if (msg.request === "undo") {
         let container = getContainer();
